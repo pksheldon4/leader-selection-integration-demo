@@ -6,7 +6,8 @@ target/
 
 mvnw
 mvnw.cmd
-
+postgres-db/
+*.iml
 
 ### STS ###
 .apt_generated
