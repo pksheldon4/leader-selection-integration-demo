@@ -1,0 +1,24 @@
+version: "3"
+services:
+  postgres-db:
+    image: "postgres" # use latest official postgres version
+    environment:
+      - POSTGRES_USER=psheldon
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-db/postgres/data:/var/lib/postgresql/data
+  instance_1:
+    image: "leader-selection-integration-demo:0.0.1-SNAPSHOT"
+    environment:
+      - DB_HOST=postgres-db
+    ports:
+      - "8881:8080"
+  instance_2:
+    image: "leader-selection-integration-demo:0.0.1-SNAPSHOT"
+    environment:
+      - DB_HOST=postgres-db
+    ports:
+      - "8882:8080"

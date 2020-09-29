@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/postgres
+    username: psheldon
+    password: password
+    schema: classpath:org/springframework/integration/jdbc/schema-postgresql.sql
+    continue-on-error: true
+    initialization-mode: always
+logging:
+  level:
+    ROOT: info
+    org.springframework.jdbc: info
+
+leaderSelection:
+  fixedDelay: ${LEADER_FIXED_DELAY:5000}
+  initialDelay:  ${LEADER_INITIAL_DELAY:5000}
+  heartBeatThreshold: ${LEADER_HEARTBEAT_THRESHOLD:30000}
